@@ -50,7 +50,7 @@ def get_container_cells_array(pos_x: int, pos_y: int):
     return arr
 
 
-def get_neighbor_cells(pos_y: int, pos_x: int):
+def get_neighbor_arrays(pos_y: int, pos_x: int):
     """Generate 3 arrays of cells: X lane, Y lane and container"""
     # X lane
     arr = []
@@ -72,7 +72,7 @@ def get_neighbor_cells(pos_y: int, pos_x: int):
 
 def get_all_neighbors(pos_y: int, pos_x: int):
     all_neighbors = []
-    for arr in get_neighbor_cells(y, x):
+    for arr in get_neighbor_arrays(y, x):
         all_neighbors += arr
     return all_neighbors
 
@@ -198,7 +198,7 @@ if __name__ == '__main__':
                 print(f"    Current options are: {aisle[1]}")
 
                 # Per lane or containter Iterate over all neighboring cells and subtract their options from ours
-                for arr in get_neighbor_cells(y, x):
+                for arr in get_neighbor_arrays(y, x):
                     print(f"Checking array: ", arr)
                     opts = list(aisle[1])
                     for y_id, x_id in arr:
