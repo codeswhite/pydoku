@@ -67,7 +67,9 @@ def get_neighbor_arrays(pos_y: int, pos_x: int):
     yield arr
 
     # Container
-    yield get_container_cells_array(pos_x, pos_y)
+    yield [pos
+           for pos in get_container_cells_array(pos_x, pos_y)
+           if pos != (pos_y, pos_x)]
 
 
 def get_all_neighbors(pos_y: int, pos_x: int):
