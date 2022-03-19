@@ -146,13 +146,13 @@ if __name__ == '__main__':
                     exit()
 
                 elif opts_c == 1:
-                    print(f"Found: [{x=},{y=}] is: {opts[0]}")
+                    print(f"Found: [{y=},{x=}] is: {opts[0]}")
                     aisle[0] = opts[0]
                     found += 1
 
                     # Just to make sure we dont have an error in the algorithm
                     if err := find_errors(tensor):
-                        print(f"ERR in: x={err[1]} y={err[0]}")
+                        print(f"ERR in: y={err[0]} x={err[1]}")
                         exit()
 
                     # Show status and wait for user to press enter
@@ -164,17 +164,17 @@ if __name__ == '__main__':
                     continue
 
                 else:
-                    print(f"Options for [{x=},{y=}] are: {opts}")
+                    print(f"Options for [{y=},{x=}] are: {opts}")
                     aisle[1] = opts
                     missing += 1
                     continue
 
         print("Finished stage 1")
+        print_tensor(tensor)
         if found > 0:
             print(
                 f"Finished iteration with {found} founds, {missing} still missing")
             print("Rerunning stage 1 because we had successful findings")
-            print_tensor(tensor)
             continue
 
         print("Stage 1 failed, running stage 2")
@@ -194,7 +194,7 @@ if __name__ == '__main__':
                 if aisle[0]:
                     continue
 
-                print(f"[Stage 2] trying to solve {x=}, {y=}")
+                print(f"[Stage 2] trying to solve {y=}, {x=}")
                 print(f"    Current options are: {aisle[1]}")
 
                 # Per lane or containter Iterate over all neighboring cells and subtract their options from ours
@@ -207,7 +207,7 @@ if __name__ == '__main__':
                             continue
 
                         print(
-                            f'> Neighbor in {x_id=}, {y_id=} has: {temp_aisle[1]}')
+                            f'> Neighbor in {y_id=}, {x_id=} has: {temp_aisle[1]}')
                         for opt in temp_aisle[1]:
                             if opt in opts:
                                 opts.remove(opt)
@@ -224,7 +224,7 @@ if __name__ == '__main__':
                     #     exit()
 
                     if opts_c == 1:
-                        print(f"Found: [{x=},{y=}] is: {opts[0]}")
+                        print(f"Found: [{y=},{x=}] is: {opts[0]}")
                         aisle[0] = opts[0]
                         found += 1
 
@@ -238,7 +238,7 @@ if __name__ == '__main__':
 
                         # Just to make sure we dont have an error in the algorithm
                         if err := find_errors(tensor):
-                            print(f"ERR in: x={err[1]} y={err[0]}")
+                            print(f"ERR in: y={err[0]} x={err[1]}")
                             exit()
 
                         # Show status and wait for user to press enter
